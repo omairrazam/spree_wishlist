@@ -45,9 +45,6 @@ class Spree::WishlistsController < Spree::StoreController
 
   def destroy
     @wishlist.destroy
-    respond_with(@wishlist) do |format|
-      format.html { redirect_to account_path }
-    end
   end
 
   private

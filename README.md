@@ -12,16 +12,19 @@ The Spree Wishlist extension enables multiple wishlists per user, as well as man
 Add the following to your `Gemfile`
 ```ruby
 gem 'spree_wishlist', github: 'spree-contrib/spree_wishlist', branch: '3-0-stable'
-gem 'spree_email_to_friend', github: 'spree-contrib/spree_email_to_friend', branch: '3-0-stable'
+```
+
+```ruby
+gem 'spree_sales', github: 'yaseen2211/spree_sales', branch: 'master'
 ```
 
 Run
 ```sh
 $ bundle install
+$ bundle exec rails g spree_sales:install
 $ bundle exec rails g spree_wishlist:install
-```
 
----
+```
 
 ## Contributing
 

@@ -1,5 +1,4 @@
 class Spree::WishedProductsController < Spree::StoreController
-  respond_to :html
 
   def create
     @wished_product = Spree::WishedProduct.new(wished_product_attributes)
@@ -12,9 +11,6 @@ class Spree::WishedProductsController < Spree::StoreController
       @wished_product.save
     end
 
-    respond_with(@wished_product) do |format|
-      format.html { redirect_to wishlist_url(@wishlist) }
-    end
   end
 
   def update
@@ -29,10 +25,6 @@ class Spree::WishedProductsController < Spree::StoreController
   def destroy
     @wished_product = Spree::WishedProduct.find(params[:id])
     @wished_product.destroy
-
-    respond_with(@wished_product) do |format|
-      format.html { redirect_to wishlist_url(@wished_product.wishlist) }
-    end
   end
 
   private
