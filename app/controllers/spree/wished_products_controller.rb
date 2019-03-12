@@ -1,6 +1,7 @@
 class Spree::WishedProductsController < Spree::StoreController
 
   def create
+
     @wished_product = Spree::WishedProduct.new(wished_product_attributes)
     @wishlist = spree_current_user.wishlist
 
