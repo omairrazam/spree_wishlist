@@ -9,7 +9,10 @@ class Spree::WishedProductsController < Spree::StoreController
       @wished_product = @wishlist.wished_products.detect { |wp| wp.variant_id == params[:wished_product][:variant_id].to_i }
     else
       @wished_product.wishlist = spree_current_user.wishlist
-      @wished_product.save
+      
+      if @wished_product.save
+        Spree::WishedProduct.delete_wished_product_from_order(current_order, @wished_product)
+      end
     end
 
   end
