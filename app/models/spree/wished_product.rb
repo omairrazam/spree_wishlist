@@ -10,7 +10,7 @@ class Spree::WishedProduct < ActiveRecord::Base
   	matched_line_item = current_order.line_items.where("variant_id=?", wished_product.variant_id).last
   	if matched_line_item.present?
   	 matched_line_item.delete 
-  	 current_order.update(item_count: current_order.item_count - 1)
+  	 current_order.update(item_count: current_order.item_count - matched_line_item.quantity)
   	end
   end
   
