@@ -21,4 +21,6 @@
       <% end %>
     </div>
   <% end %>
+  <% else %>
+  <%= link_to Spree.t(:add_to_wishlist) ,spree.login_path , class: "btn btn-info" %>
 <% end %>
