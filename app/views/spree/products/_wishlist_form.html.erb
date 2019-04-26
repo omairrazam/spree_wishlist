@@ -6,6 +6,7 @@
 
 
 <% if spree_current_user.present? %>
+
   <% if is_product_wished.present?  %>
   	<%= link_to "Remove from Wishlist" ,wished_product_path(is_product_wished, view_from: "cart_page" ),method: :delete, remote: true , class: "btn btn-danger" %>
 
@@ -21,4 +22,8 @@
       <% end %>
     </div>
   <% end %>
+
+
+<% else %>
+  <%= link_to Spree.t(:add_to_wishlist) ,spree.login_path , class: "btn btn-info" %>
 <% end %>
