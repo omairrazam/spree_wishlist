@@ -1,7 +1,6 @@
 class Spree::WishedProductsController < Spree::StoreController
 
   def create
-
     @wished_product = Spree::WishedProduct.new(wished_product_attributes)
     @wishlist = spree_current_user.wishlist
 
@@ -13,6 +12,10 @@ class Spree::WishedProductsController < Spree::StoreController
       if @wished_product.save
         Spree::WishedProduct.delete_wished_product_from_order(current_order, @wished_product)
       end
+    end
+    respond_to do |format|
+      format.html { redirect_to root_path}
+      format.js
     end
 
   end
@@ -29,6 +32,10 @@ class Spree::WishedProductsController < Spree::StoreController
   def destroy
     @wished_product = Spree::WishedProduct.find(params[:id])
     @wished_product.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path}
+      format.js
+    end
   end
 
   private
