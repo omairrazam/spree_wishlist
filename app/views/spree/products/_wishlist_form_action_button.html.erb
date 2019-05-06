@@ -1,3 +1,5 @@
+
+
 <% user_wishlist_products = (spree_current_user.present? && spree_current_user.wishlists.present?) ?  spree_current_user.wishlists.first.wished_products : "" %>
 <% is_product_wished = user_wishlist_products.present? ? user_wishlist_products.select{|s| s.variant.product == product}.last : "" %>
 <% if spree_current_user.present? %>
