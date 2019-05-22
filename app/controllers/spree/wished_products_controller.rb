@@ -3,19 +3,24 @@ class Spree::WishedProductsController < Spree::StoreController
   def create
     @wished_product = Spree::WishedProduct.new(wished_product_attributes)
     @wishlist = spree_current_user.wishlist
+    @line_item_id = params[:line_item_id]
 
     if @wishlist.include? params[:wished_product][:variant_id]
       @wished_product = @wishlist.wished_products.detect { |wp| wp.variant_id == params[:wished_product][:variant_id].to_i }
     else
       @wished_product.wishlist = spree_current_user.wishlist
       
-      if @wished_product.save
-        Spree::WishedProduct.delete_wished_product_from_order(current_order, @wished_product)
-      end
+      # if @wished_product.save
+      #   # Spree::WishedProduct.delete_wished_product_from_order(current_order, @wished_product)
+      # end
     end
-    respond_to do |format|
-      format.html { redirect_to root_path}
-      format.js
+
+
+    if @wished_product.save
+      respond_to do |format|
+        format.html { redirect_to root_path}
+        format.js
+      end
     end
 
   end
