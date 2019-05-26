@@ -10,7 +10,7 @@
   <% else %>
     <div id="wishlist-form">
       <%= form_for Spree::WishedProduct.new, html: {id: "product_dtl_wishlist", remote: true} do |f| %>
-        <%= f.hidden_field :variant_id, value: product.master.id %>
+        <%= f.hidden_field :variant_id, value: product.variant_ids.last||product.master.id %>
         <%= f.hidden_field :quantity %>
         <%=  hidden_field_tag "view_from", "product_page" %>
         <button type="submit" class="button-body-2 wish-btn">
