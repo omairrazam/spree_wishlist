@@ -1,6 +1,7 @@
 class Spree::WishedProductsController < Spree::StoreController
 
   def create
+
     @wished_product = Spree::WishedProduct.new(wished_product_attributes)
     @wishlist = spree_current_user.wishlist
     @line_item_id = params[:line_item_id]
@@ -10,9 +11,9 @@ class Spree::WishedProductsController < Spree::StoreController
     else
       @wished_product.wishlist = spree_current_user.wishlist
       
-      # if @wished_product.save
-      #   # Spree::WishedProduct.delete_wished_product_from_order(current_order, @wished_product)
-      # end
+      if @wished_product.save
+        Spree::WishedProduct.delete_wished_product_from_order(current_order, @wished_product)
+      end
     end
 
 
