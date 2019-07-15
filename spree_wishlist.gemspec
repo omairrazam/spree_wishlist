@@ -6,7 +6,7 @@ require 'spree_wishlist/version'
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_wishlist'
+  s.name        = 'spree_dev_wishlist'
   s.version     = SpreeWishlist.version
   s.summary     = 'Add wishlists to Spree'
   s.description = s.summary
